@@ -30,9 +30,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.showsUserLocation = true
     }
     
+    //delegate method that fires when user location is recieved
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        //zoom in on user
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1000, 1000)
         mapView.setRegion(region, animated: true)
+        
     }
 
 }
