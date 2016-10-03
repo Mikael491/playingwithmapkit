@@ -103,6 +103,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    //TODO: Directions to Gym
+    
+    
+    
     //TODO: Handle annotations with custom views
 
 }
