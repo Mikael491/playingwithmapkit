@@ -24,6 +24,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         setup()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.addAnnotation))
         mapView.addGestureRecognizer(tapGesture)
+        
+        
     }
 
     func setup() {
@@ -48,9 +50,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func addAnnotation() {
         let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
         self.mapView.addAnnotation(annotation)
+
     }
     
     
+    func getAddress() {
+        
+        self.geoCoder.reverseGeocodeLocation(self.location!) { (location, error) in
+            
+            print(location)
+            
+        }
+        
+    }
     
     
     //TODO: Handle annotations with custom views
