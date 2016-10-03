@@ -29,6 +29,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
     }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1000, 1000)
+        mapView.setRegion(region, animated: true)
+    }
 
 }
 
