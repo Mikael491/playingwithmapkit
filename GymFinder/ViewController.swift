@@ -20,6 +20,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         setup()
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector(("addAnnotation")))
+        mapView.addGestureRecognizer(tapGesture)
     }
 
     func setup() {
