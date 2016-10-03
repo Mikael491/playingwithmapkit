@@ -22,6 +22,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         setup()
+        
+        //on tap creates annotation with reverse geocoded address
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.addAnnotation))
         mapView.addGestureRecognizer(tapGesture)
         
@@ -47,6 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
+    //method that reverse geocodes address asynchronously and creates annotation with that address synchronously
     func addAnnotation() {
         
         self.geoCoder.reverseGeocodeLocation(self.location!) { (location, error) in
