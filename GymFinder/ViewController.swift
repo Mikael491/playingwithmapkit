@@ -51,13 +51,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         self.geoCoder.reverseGeocodeLocation(self.location!) { (location, error) in
             
-            print(location)
+            guard let addressPieces = location?[0].addressDictionary else {
+                print("Error grabbing address from location - \(location?[0].addressDictionary)")
+                return
+            }
             
+            guard let street = addressPieces["Street"] as? String else {
+                print("Error grabbing street address from - \(addressPieces)")
+                return
+            }
+            
+            DispatchQueue.global().sync {
+                let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: street, subtitle: "Annotation Subtitle")
+                self.mapView.addAnnotation(annotation)
+            }
         }
-        
-        let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
-        self.mapView.addAnnotation(annotation)
-
     }
     
     //TODO: Handle annotations with custom views
