@@ -48,13 +48,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func addAnnotation() {
-        let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
-        self.mapView.addAnnotation(annotation)
-
-    }
-    
-    
-    func getAddress() {
         
         self.geoCoder.reverseGeocodeLocation(self.location!) { (location, error) in
             
@@ -62,8 +55,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
         }
         
+        let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
+        self.mapView.addAnnotation(annotation)
+
     }
-    
     
     //TODO: Handle annotations with custom views
 
