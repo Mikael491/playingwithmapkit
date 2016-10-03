@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var location: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //delegate method that fires when user location is recieved
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        self.location = userLocation.location
         
         //zoom in on user
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1000, 1000)
