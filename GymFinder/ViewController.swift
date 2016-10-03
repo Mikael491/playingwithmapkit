@@ -48,6 +48,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
         self.mapView.addAnnotation(annotation)
     }
+    
+    //TODO: Handle annotations with custom views
 
 }
 
