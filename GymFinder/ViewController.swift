@@ -15,13 +15,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var location: CLLocation?
+    var geoCoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         setup()
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector(("addAnnotation")))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.addAnnotation))
         mapView.addGestureRecognizer(tapGesture)
     }
 
@@ -48,6 +49,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let annotation = Annotation(coordinate: (self.location?.coordinate)!, title: "Annotation Title", subtitle: "Annotation Subtitle")
         self.mapView.addAnnotation(annotation)
     }
+    
+    
+    
     
     //TODO: Handle annotations with custom views
 
