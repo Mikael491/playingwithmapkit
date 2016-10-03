@@ -27,6 +27,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.addAnnotation))
         mapView.addGestureRecognizer(tapGesture)
         
+        let region = CLCircularRegion(center: (location?.coordinate)!, radius: 1000, identifier: "Folsem Office")
+        self.mapView.addOverlays(MKCircle(center: (location?.coordinate)!, radius: 100))
+        
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
         
     }
 
